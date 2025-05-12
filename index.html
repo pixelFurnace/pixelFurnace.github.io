@@ -1,1 +1,129 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Мой сайт</title></head><body><h1>Привет, мир!</h1></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>pixelFurnace</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #232526, #414345);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 960px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    section {
+      max-width: 960px;
+      margin: 100px auto;
+      padding: 60px 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #aaa;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div><strong>pixelFurnace</strong></div>
+    <div>
+      <a href="#about">О сайте</a>
+      <a href="#projects">Проекты</a>
+      <a href="#contact">Контакты</a>
+    </div>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>О сайте</h2>
+  <p>Этот сайт создан через Termux и GitHub Pages. Он демонстрирует, как легко развернуть красивый сайт прямо с телефона!</p>
+</section>
+
+<section id="projects">
+  <h2>Проекты</h2>
+  <p>Здесь скоро появятся мои проекты: от скриптов до веб-приложений и автоматизации.</p>
+</section>
+
+<section id="contact">
+  <h2>Контакты</h2>
+  <p>Связаться со мной можно через GitHub или Telegram (добавь ссылки при желании).</p>
+</section>
+
+<footer>
+  &copy; 2025 pixelFurnace. Все права защищены.
+</footer>
+
+<script>
+  // Анимация появления при прокрутке
+  const sections = document.querySelectorAll("section");
+  const options = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
+
